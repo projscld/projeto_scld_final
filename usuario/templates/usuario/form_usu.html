@@ -1,0 +1,39 @@
+{% extends 'usuario/base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+  Formulário de usuario
+{% endblock %}
+
+{% block conteudo %}
+<!-- <form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input class="btn btn-primary" type="submit" value="Cadastrar">   
+</form> -->
+
+  <form method="post">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} Gera o formulário completo -->
+    <div class="form-group">
+      {{ form.nome.errors }}
+      <label>Nome completo: </label> {{ form.nome | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.email.errors }}
+      <label>Email institucional: </label> {{ form.email | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.turma.errors }}
+      <label>Turma: </label> {{ form.turma | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.curso.errors }}
+      <label>Curso: </label> {{ form.curso | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary" type="submit" value="Cadastrar">   
+      <a class="btn btn-secondary" href="{% url 'listar_usuarios' %}">Voltar</a>
+    </div> 
+  </form>  
+{% endblock %}
